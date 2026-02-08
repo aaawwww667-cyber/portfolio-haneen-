@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haneen Mohamed | Interactive Data Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;600;800&family=JetBrains+Mono:wght@300;500&display=swap');
+        
+        :root {
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --bg: #020617;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: #f8fafc;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-text { background: linear-gradient(135deg, #fff 30%, var(--primary) 70%, var(--secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Project Card Styles */
+        .project-card {
+            position: relative;
+            height: 500px;
+            border-radius: 2rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1) rotate(1deg);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.95) 10%, rgba(2, 6, 23, 0.4) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            opacity: 0.9;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            background: linear-gradient(to top, rgba(2, 6, 23, 1) 20%, rgba(2, 6, 23, 0.6) 60%, rgba(56, 189, 248, 0.1) 100%);
+        }
+
+        /* Lightbox - الصورة المكبرة */
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 1rem;
+            box-shadow: 0 0 50px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-premium {
+            padding: 1rem 2rem; border-radius: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.7rem; display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-premium:hover { background: var(--primary); color: #000; transform: translateY(-3px); }
+
+        .social-link {
+            width: 45px; height: 45px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center; transition: 0.3s;
+        }
+        .social-link:hover { border-color: var(--primary); color: var(--primary); transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center glass border-b border-white/5">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center font-black text-black">H</div>
+            <span class="text-xs font-bold tracking-widest uppercase hidden md:block">Haneen Mohamed</span>
+        </div>
+        <div class="flex gap-4">
+             <a href="https://www.linkedin.com/in/haneen-mohamed-995861367/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+             <a href="https://wa.me/201027324111" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen pt-32 pb-20 px-6 flex items-center">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <span class="mono text-sky-400 text-[10px] tracking-[0.5em] uppercase mb-6 block">Senior Data Architect</span>
+                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-none tracking-tighter uppercase">
+                    THE DATA <br> <span class="gradient-text">STRATEGIST.</span>
+                </h1>
+                <p class="text-lg text-slate-400 mb-10 max-w-lg leading-relaxed">
+                    تحويل البيانات المعقدة إلى رؤى استراتيجية تدعم اتخاذ القرار. خبيرة في بناء أنظمة ذكاء الأعمال والتحليل المتقدم.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#projects" class="btn-premium bg-white text-black border-white">Explore My Work</a>
+                    <a href="https://wa.me/201027324111" target="_blank" class="btn-premium">Hire Me</a>
+                </div>
+            </div>
+            <div class="relative" data-aos="zoom-in">
+                <div class="rounded-[3rem] overflow-hidden border border-white/10 aspect-[4/5] relative">
+                    <img src="https://d.top4top.io/p_3691zo2ub1.jpeg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Haneen">
+                    <div class="absolute bottom-6 left-6 right-6 glass p-6 rounded-2xl">
+                        <p class="text-[10px] mono text-sky-400 uppercase mb-1">Based in</p>
+                        <p class="font-bold">Cairo, Egypt (Global Reach)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="projects" class="py-24 px-6 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-4xl font-black uppercase tracking-tight mb-4">Strategic Case Studies</h2>
+                <p class="text-slate-500 mono text-xs uppercase tracking-widest italic">Click any image to enlarge and view details</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card group" onclick="openLightbox('https://i.top4top.io/p_3691cwclr1.jpeg', 'Inventory Analysis', 'Optimizing stock movements and prediction models.')" data-aos="fade-up">
+                    <img src="https://i.top4top.io/p_3691cwclr1.jpeg" alt="Inventory">
+                    <div class="project-overlay">
+                        <span class="mono text-sky-400 text-[10px] uppercase mb-2 tracking-widest">Supply Chain</span>
+                        <h3 class="text-3xl font-black mb-4 uppercase">Inventory Dynamics</h3>
+                        <p class="text-slate-300 text-sm mb-6 max-w-sm">تحليل حركة المخزون لتقليل الهالك وزيادة كفاءة التوريد بنسبة 20%.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-white/10 rounded-lg text-[9px] uppercase font-bold">Power BI</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-lg text-[9px] uppercase font-bold">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card group" onclick="openLightbox('https://b.top4top.io/p_36910vi2t1.png', 'Sales Performance', 'Comprehensive sales dashboard for retail intelligence.')" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://b.top4top.io/p_36910vi2t1.png" alt="Sales">
+                    <div class="project-overlay">
+                        <span class="mono text-purple-400 text-[10px] uppercase mb-2 tracking-widest">Retail Intelligence</span>
+                        <h3 class="text-3xl font-black mb-4 uppercase">Sales IQ Dashboard</h3>
+                        <p class="text-slate-300 text-sm mb-6 max-w-sm">مراقبة الأداء البيعي في الوقت الفعلي مع تحليل الاتجاهات الموسمية.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-white/10 rounded-lg text-[9px] uppercase font-bold">DAX</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-lg text-[9px] uppercase font-bold">Excel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card group" onclick="openLightbox('https://d.top4top.io/p_3691yl15l1.png', 'Market Trends', 'Global market share and competitor analysis.')" data-aos="fade-up">
+                    <img src="https://d.top4top.io/p_3691yl15l1.png" alt="Market">
+                    <div class="project-overlay">
+                        <span class="mono text-green-400 text-[10px] uppercase mb-2 tracking-widest">Strategy</span>
+                        <h3 class="text-3xl font-black mb-4 uppercase">Market Share IQ</h3>
+                        <p class="text-slate-300 text-sm mb-6 max-w-sm">دراسة الحصة السوقية وتحليل المنافسين باستخدام تقنيات Python.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-white/10 rounded-lg text-[9px] uppercase font-bold">Python</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-lg text-[9px] uppercase font-bold">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card group" onclick="openLightbox('https://i.top4top.io/p_3691s3qo71.png', 'Logistics Automation', 'Freight and logistics tracking system.')" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://i.top4top.io/p_3691s3qo71.png" alt="Logistics">
+                    <div class="project-overlay">
+                        <span class="mono text-yellow-400 text-[10px] uppercase mb-2 tracking-widest">Operations</span>
+                        <h3 class="text-3xl font-black mb-4 uppercase">Logistics Matrix</h3>
+                        <p class="text-slate-300 text-sm mb-6 max-w-sm">أتمتة تقارير الشحن لتقليل التأخير بنسبة 15% وتحسين مسارات التوزيع.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-white/10 rounded-lg text-[9px] uppercase font-bold">VBA</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-lg text-[9px] uppercase font-bold">Power Query</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Element -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-10 right-10 text-white text-4xl hover:text-sky-400">&times;</button>
+        <div class="max-w-5xl w-full flex flex-col items-center gap-6" onclick="event.stopPropagation()">
+            <img id="lightboxImg" src="" alt="Enlarged view">
+            <div class="text-center">
+                <h4 id="lightboxTitle" class="text-2xl font-black uppercase text-sky-400"></h4>
+                <p id="lightboxDesc" class="text-slate-400 mt-2"></p>
+                <div class="mt-6 flex gap-4 justify-center">
+                    <a href="https://wa.me/201027324111" target="_blank" class="btn-premium">Discuss This Case</a>
+                    <button onclick="closeLightbox()" class="btn-premium border-white/20">Close Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 text-center border-t border-white/5">
+        <h2 class="text-4xl font-black mb-6 uppercase tracking-widest">Let's Connect</h2>
+        <div class="flex justify-center gap-6 mb-12">
+            <a href="https://www.linkedin.com/in/haneen-mohamed-995861367/" target="_blank" class="social-link text-2xl"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/201027324111" target="_blank" class="social-link text-2xl"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:haneen.mohamed.data@gmail.com" class="social-link text-2xl"><i class="far fa-envelope"></i></a>
+        </div>
+        <p class="mono text-[10px] text-slate-600 uppercase tracking-[0.5em]">Haneen Mohamed © 2026 // Data Visionary</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Lightbox Functions
+        function openLightbox(imgSrc, title, desc) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const titleEl = document.getElementById('lightboxTitle');
+            const descEl = document.getElementById('lightboxDesc');
+
+            img.src = imgSrc;
+            titleEl.innerText = title;
+            descEl.innerText = desc;
+            
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // منع التمرير عند فتح الصورة
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeLightbox();
+        });
+    </script>
+</body>
+</html>
